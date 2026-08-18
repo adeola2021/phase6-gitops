@@ -20,7 +20,7 @@ spec:
           image: ghcr.io/adeola2021/supply-chain-demo@sha256:a0dfe8bdcbf2ab77f575323ed64e6ba4b9db783c646f797aa7ac21f644bbf407
           imagePullPolicy: IfNotPresent
           securityContext:
-            readOnlyRootFilesystem: false
+            readOnlyRootFilesystem: true
             capabilities:
               drop:
                 - ALL
