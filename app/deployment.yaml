@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supply-chain-demo
+  namespace: supply-chain-demo
+  labels:
+    app: supply-chain-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: supply-chain-demo
+  template:
+    metadata:
+      labels:
+        app: supply-chain-demo
+    spec:
+      containers:
+        - name: supply-chain-demo
+          image: ghcr.io/adeola2021/supply-chain-demo@sha256:a0dfe8bdcbf2ab77f575323ed64e6ba4b9db783c646f797aa7ac21f644bbf407
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 5000
